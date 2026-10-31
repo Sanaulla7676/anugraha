@@ -31,7 +31,7 @@ export default function PillNav() {
   useEffect(() => {
     const element = root.current;
     if (!element) return;
-    const observer = new ResizeObserver(([entry]) => setCollapsed(entry.contentRect.width < 1060));
+    const observer = new ResizeObserver(([entry]) => setCollapsed(entry.contentRect.width < 760));
     observer.observe(element);
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!media.matches) gsap.fromTo(element, { y: -14, opacity: 0 }, { y: 0, opacity: 1, duration: .72, ease: "power3.out" });
