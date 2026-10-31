@@ -8,6 +8,7 @@ type Props = {
   manualMode?: boolean;
   focusStyle?: "brackets" | "box" | "underline" | "highlight";
   order?: "sequential" | "random";
+  easing?: "smooth" | "spring";
   blurAmount?: number;
   focusScale?: number;
   borderColor?: string;
@@ -26,6 +27,7 @@ export default function TrueFocus({
   manualMode=false,
   focusStyle="brackets",
   order="sequential",
+  easing="smooth",
   blurAmount=4,
   focusScale=1,
   borderColor="#B88A4A",
@@ -84,7 +86,8 @@ export default function TrueFocus({
     "--focus-highlight":highlightColor,
     "--focus-width":`${borderWidth}px`,
     "--focus-corner":`${cornerSize}px`,
-    "--focus-duration":`${animationDuration}s`
+    "--focus-duration":`${animationDuration}s`,
+    "--focus-ease":easing==="spring"?"cubic-bezier(.34,1.56,.64,1)":"cubic-bezier(.65,0,.35,1)"
   } as React.CSSProperties;
 
   return <span ref={host} className={`true-focus-button ${className}`} style={style}>

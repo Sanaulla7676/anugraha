@@ -75,8 +75,8 @@ img{max-width:100%}
 .hero-button-secondary{background:transparent;border-color:var(--champagne);color:var(--charcoal)}
 .hero-button b{font-size:14px;line-height:1}
 .true-focus-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.27em;white-space:nowrap;isolation:isolate}
-.true-focus-word{position:relative;z-index:1;display:inline-block;transition:filter var(--focus-duration) cubic-bezier(.65,0,.35,1),opacity var(--focus-duration) ease,transform var(--focus-duration) cubic-bezier(.34,1.56,.64,1)}
-.true-focus-frame{position:absolute;z-index:0;pointer-events:none;transition:left var(--focus-duration) cubic-bezier(.65,0,.35,1),top var(--focus-duration) cubic-bezier(.65,0,.35,1),width var(--focus-duration) cubic-bezier(.65,0,.35,1),height var(--focus-duration) cubic-bezier(.65,0,.35,1)}
+.true-focus-word{position:relative;z-index:1;display:inline-block;transition:filter var(--focus-duration) var(--focus-ease),opacity var(--focus-duration) ease,transform var(--focus-duration) var(--focus-ease)}
+.true-focus-frame{position:absolute;z-index:0;pointer-events:none;transition:left var(--focus-duration) var(--focus-ease),top var(--focus-duration) var(--focus-ease),width var(--focus-duration) var(--focus-ease),height var(--focus-duration) var(--focus-ease)}
 .true-focus-brackets{border:0}
 .focus-corner{position:absolute;width:var(--focus-corner);height:var(--focus-corner);border-color:var(--focus-border);border-style:solid;border-width:0}
 .focus-corner.tl{top:0;left:0;border-top-width:var(--focus-width);border-left-width:var(--focus-width)}
