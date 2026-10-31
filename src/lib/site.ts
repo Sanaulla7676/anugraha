@@ -7,15 +7,11 @@ export const palette = {
 
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "The Institute", href: "/about" },
-  { label: "Founders", href: "/founders" },
   { label: "45-Day Course", href: "/course" },
   { label: "Curriculum", href: "/curriculum" },
   { label: "Industry Exposure", href: "/exposure" },
-  { label: "Careers", href: "/careers" },
-  { label: "Student Work", href: "/projects" },
-  { label: "Admissions", href: "/admissions" },
-  { label: "Contact", href: "/contact" }
+  { label: "Career Paths", href: "/careers" },
+  { label: "About", href: "/about" }
 ];
 
 export const stats = [

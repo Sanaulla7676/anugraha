@@ -455,5 +455,35 @@ sections:[
 ],
 closingTitle:"A good decision begins with useful information.",
 closingText:"Submit a counselling request and open WhatsApp with a prepared message to the admissions team."
+},
+resources: {
+tag:"ANUGRAHA RESOURCES · EVENT PLANNING GUIDES",
+title:"Practical guides for learning event management.",
+subtitle:"Clear answers to the questions planners face.",
+intro:"These guides introduce practical thinking used in event planning. They are educational resources, not a replacement for the institute’s course timetable or trainer-led advice. Each topic connects to skills introduced in Anugraha’s 45-day programme.",
+photo:"photo-1492684223066-81342ee5ff30",
+gallery:["photo-1519741497674-611481863552","photo-1519167758481-83f550bb49b3","photo-1497366754035-f200968a6e72"],
+sections:[
+{title:"How to prepare an event brief",body:"An event brief turns a conversation into a shared reference. Record the purpose, audience, date, location, guest estimate, desired experience, budget range and decision-makers before proposing an idea."},
+{title:"Questions to ask during a client meeting",body:"Good discovery questions clarify priorities before the event plan is built. Ask what success looks like, which moments matter most, what is fixed, what can change and who approves the final decisions."},
+{title:"How to structure an event proposal",body:"A useful proposal explains the event concept, client objectives, scope, deliverables, schedule, planning assumptions and responsibilities. It should help a client understand what is being offered."},
+{title:"What belongs in an event quotation",body:"An itemised quotation separates services and supplier costs so the client can understand the estimate. Identify quantities, rates, setup, transport, optional items, exclusions and assumptions."},
+{title:"A simple way to think about event budgets",body:"Start with the scope, list cost categories, collect supplier estimates and compare the total with the client’s budget. Update figures when requirements change and keep a record of revisions."},
+{title:"How to research event vendors",body:"Search by service type, location, event scale and timing. Record what each supplier provides, the information needed for a quote, relevant experience and how to confirm availability."},
+{title:"Comparing suppliers fairly",body:"Compare more than the lowest price. Check scope, materials, service quality, timing, setup, transport, terms and suitability for the event brief."},
+{title:"What to include in an event timeline",body:"Map the preparation milestones, supplier confirmations, venue access, setup, guest arrival, programme transitions, closing and post-event tasks. Assign a responsible person to important actions."},
+{title:"Why an event run sheet matters",body:"A run sheet keeps the event-day team aligned. Use clear times, activities, owners and notes, and make sure the latest version is shared with the people who need it."},
+{title:"Planning a wedding across different traditions",body:"Start by understanding the ceremony sequence, family requirements, guest experience and key timings. Do not assume that every wedding follows the same ritual or operating plan."},
+{title:"Planning a corporate conference",body:"Clarify the objective, delegate profile, speaker schedule, registration process, room layout, production requirements and transitions between sessions."},
+{title:"How to build an event vendor contact list",body:"Keep supplier names, service categories, contact details, locations, quote dates, availability notes and follow-up status in one organised record. Keep information current."},
+{title:"Event marketing basics",body:"Identify the target audience, key message, event details and desired action. Choose a suitable mix of invitations, posters, social posts and reminders, then keep information consistent."},
+{title:"Preparing an event poster or invitation",body:"Prioritise the event name, date, venue, essential details and call to action. Use clear typography and visual hierarchy so people can understand the information quickly."},
+{title:"How to think about event-day coordination",body:"Know the run sheet, responsibilities, supplier arrival times and communication channel. Keep changes controlled and make sure the right people know what has changed."},
+{title:"Basic contingency planning for events",body:"Consider likely disruptions such as weather, supplier delays, schedule changes or access problems. Identify who decides, who communicates and which backup options are realistic."},
+{title:"How to start building an event portfolio",body:"Keep genuine work samples such as briefs, proposals, budgets, vendor lists, creative concepts and timelines. Explain your own contribution and never present sample work as a real client project."},
+{title:"How to explore an event management career",body:"Learn about coordination, wedding planning, corporate event support, production, décor, marketing and freelancing. Compare the tasks involved with your interests and current capabilities."}
+],
+closingTitle:"Turn curiosity into practical understanding.",
+closingText:"Explore the 45-day programme to see how Anugraha introduces these planning skills through classes, assignments and observational exposure."
 }
 };
