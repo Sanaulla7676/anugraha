@@ -31,7 +31,7 @@ export default function TextType({ items, typingSpeed = 68, deletingSpeed = 38, 
   useEffect(() => {
     if (!cursor.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const tween = gsap.to(cursor.current, { opacity: 0, duration: .45, repeat: -1, yoyo: true, ease: "sine.inOut" });
-    return () => tween.kill();
+    return () => { tween.kill(); };
   }, []);
 
   return <span className="text-type" aria-label={items.join(", ")}><span aria-hidden="true">{text.slice(0, count)}</span><span className="text-type-cursor" ref={cursor} aria-hidden="true">_</span><span className="sr-only">{text}</span></span>;
