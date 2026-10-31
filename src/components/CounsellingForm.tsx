@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 export default function CounsellingForm() {
   const [prepared,setPrepared]=useState(false);
   const [error,setError]=useState("");
 
-  const submit=(event:React.FormEvent<HTMLFormElement>)=>{
+  const submit=(event:FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     setError("");
     const form=new FormData(event.currentTarget);
