@@ -638,3 +638,8 @@ img{max-width:100%}
  .hero-background,.hero-scroll-cue i{animation:none!important;transform:none!important}
  .true-focus-word,.true-focus-frame,.true-focus-highlight,.true-focus-box,.true-focus-underline,.focus-corner{transition:none!important}
 }
+
+/* Small active-state dot, as in the responsive PillNav reference. */
+.pill-nav-link.active:after{content:"";position:absolute;left:50%;bottom:4px;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.88;transform:translateX(-50%)}
+.site-header:not(.is-scrolled) .pill-nav-link.active:after{background:#31252e}
+@media(prefers-reduced-motion:reduce){.pill-nav-link:before{transition:none!important}}

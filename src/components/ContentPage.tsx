@@ -54,7 +54,7 @@ function Hero({pageKey,page}:{pageKey:string;page:PageContent}){
    <div className="hero-copy">
     <span className="hero-eyebrow">{page.tag}</span>
     <h1>{design.h1}</h1>
-    <h2>{design.h2}</h2>
+    <h2><TextType text={design.h2} typingSpeed={38} initialDelay={120} pauseDuration={0} deletingSpeed={0} loop={false} typeEffect="rise" showCursor={false} cursorGlide={false} startOnVisible={false}/></h2>
     <p>{design.heroCopy}</p>
     {design.typeLines&&<div className="hero-type-line">
       <span>THE PROGRAMME</span>
