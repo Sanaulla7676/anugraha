@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <path d="M60 10C31 10 10 32 10 60" stroke="#B88A4A" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M60 10C89 10 110 32 110 60" stroke="#D4B991" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M60 13V25" stroke="#B88A4A" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="60" cy="8" r="2.2" fill="#B88A4A"/>
+  <path d="M60 25C43 44 49 55 60 66C71 55 77 44 60 25Z" fill="url(#g1)" stroke="#B88A4A" stroke-width="1.5"/>
+  <path d="M60 39C54 48 56 55 60 60C64 55 66 48 60 39Z" fill="#FAF8F4" stroke="#7A756D" stroke-width="1.1"/>
+  <circle cx="60" cy="70" r="3.2" fill="#B88A4A"/>
+  <path d="M60 73C40 86 35 101 60 113C85 101 80 86 60 73Z" fill="url(#g2)" stroke="#B88A4A" stroke-width="1.6"/>
+  <path d="M60 82C48 92 52 101 60 108C68 101 72 92 60 82Z" fill="#FAF8F4" stroke="#7A756D" stroke-width="1.1"/>
+  <path d="M12 61C28 61 39 66 60 92C81 66 92 61 108 61" stroke="#7A756D" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M16 70C31 78 39 89 60 113C81 89 89 78 104 70" stroke="#D4B991" stroke-width="1.5" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="g1" x1="45" y1="25" x2="78" y2="65" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF7E6"/><stop offset=".58" stop-color="#D4B991"/><stop offset="1" stop-color="#B88A4A"/></linearGradient>
+    <linearGradient id="g2" x1="35" y1="75" x2="85" y2="115" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E8E2D9"/><stop offset="1" stop-color="#A7A29C"/></linearGradient>
+  </defs>
+</svg>
