@@ -66,7 +66,7 @@ export default function PillNav() {
   return (
     <nav ref={root} className={`pill-nav ${collapsed ? "is-collapsed" : ""} ${open ? "is-open" : ""}`} aria-label="Main navigation">
       {!collapsed ? (
-        <div className="pill-nav-track">
+        <div className="pill-nav-track" onPointerLeave={() => moveIndicator(activeIndex)}>
           <span ref={indicator} className="pill-nav-indicator" aria-hidden="true" />
           <ul ref={list}>
             {nav.map((item, index) => (
