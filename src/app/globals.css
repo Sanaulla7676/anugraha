@@ -468,3 +468,18 @@ img{max-width:100%}
  html{scroll-behavior:auto}
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+.hero-visual-resources{display:flex;align-items:center;justify-content:center;background:var(--beige);border:1px solid var(--light-grey);overflow:hidden}
+.guide-stack{position:relative;width:min(390px,84%);height:360px}
+.guide-sheet{position:absolute;display:flex;flex-direction:column;gap:12px;padding:28px;background:var(--white);box-shadow:0 14px 36px rgba(43,41,38,.14)}
+.guide-sheet span{font-size:8px;letter-spacing:.2em;color:var(--warm-gold);font-weight:700}
+.guide-sheet strong{font:500 30px/1.12 var(--serif);color:var(--charcoal)}
+.guide-sheet i{height:2px;background:var(--beige)}
+.guide-sheet-back{right:0;top:22px;width:72%;height:290px;transform:rotate(6deg)}
+.guide-sheet-front{left:0;top:55px;width:77%;height:290px;transform:rotate(-4deg);justify-content:space-between}
+.guide-sheet-front small{font-size:10px;color:var(--taupe);line-height:1.6}
+.guide-seal{position:absolute;right:4%;bottom:0;width:78px;height:78px;display:flex;align-items:center;justify-content:center;flex-direction:column;border-radius:50%;background:var(--warm-gold);color:var(--ivory);font:500 29px var(--serif);text-align:center}
+.guide-seal small{font:700 7px var(--sans);letter-spacing:.18em}
+.learning-guidebook .learning-section-inner{grid-template-columns:80px minmax(0,1fr) 70px}
+.learning-guidebook .learning-detail{border:0;border-bottom:1px solid var(--champagne);background:transparent;padding:16px 7px}
+@media(max-width:680px){.guide-stack{height:290px}.guide-sheet{padding:20px}.guide-sheet-back,.guide-sheet-front{height:235px}.guide-sheet strong{font-size:25px}}

@@ -13,7 +13,11 @@ export default function PillNav(){
   const root=useRef<HTMLElement>(null);
   const list=useRef<HTMLUListElement>(null);
   const marker=useRef<HTMLSpanElement>(null);
-  const active=Math.max(0,nav.findIndex(item=>pathname===item.href||(item.href!=="/"&&pathname.startsWith(item.href))));
+  const matched=nav.findIndex(item=>pathname===item.href||(item.href!=="/"&&pathname.startsWith(item.href)));
+  const fallback=pathname.startsWith("/founders")||pathname.startsWith("/gallery")||pathname.startsWith("/contact")?"/about":
+    pathname.startsWith("/curriculum")||pathname.startsWith("/projects")||pathname.startsWith("/roadmap")||pathname.startsWith("/student-stories")||pathname.startsWith("/resources")?"/curriculum":
+    pathname.startsWith("/admissions")||pathname.startsWith("/counselling")||pathname.startsWith("/faq")?"/course":"/";
+  const active=matched>=0?matched:Math.max(0,nav.findIndex(item=>item.href===fallback));
 
   useEffect(()=>{
     const el=root.current;if(!el)return;

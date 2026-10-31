@@ -67,6 +67,13 @@ function HeroVisual({variant,pageKey,photo}:{variant:HeroVariant;pageKey:string;
     {image(photo,"Students learning in a classroom","visual-main")}
     <div className="roadmap-day-count"><strong>45</strong><span>DAYS</span></div>
   </div>;
+  case "resources": return <div className="hero-visual hero-visual-resources">
+    <div className="guide-stack">
+      <div className="guide-sheet guide-sheet-back"><span>ANUGRAHA FIELD GUIDE</span><strong>Event plan</strong><i/><i/><i/><i/></div>
+      <div className="guide-sheet guide-sheet-front"><span>PLANNING BASICS / 01</span><strong>Start with<br/>the brief.</strong><small>Ask better questions.<br/>Plan with clarity.</small></div>
+      <div className="guide-seal">18<br/><small>GUIDES</small></div>
+    </div>
+  </div>;
   case "stories": return <div className="hero-visual hero-visual-stories">
     {image(photo,"Learners collaborating in a classroom","visual-main")}
     <div className="honesty-card"><span>OUR PROMISE</span><strong>Real stories.<br/>No invented reviews.</strong><small>Student feedback will be published with permission.</small></div>
@@ -130,7 +137,7 @@ function IntroPanel({page,design,pageKey}:{page:PageContent;design:typeof pageDe
 function SectionDetails({pageKey,title,body,index,variant}:{pageKey:string;title:string;body:string;index:number;variant:SectionVariant}){
  const details=getSectionDetails(title,body,pageKey,index);
  const revealVariant:Record<SectionVariant,"rise"|"left"|"right"|"clip"|"scale"|"stagger"|"fade">={
- editorial:"left",manifesto:"rise",profiles:"stagger",modules:"stagger",syllabus:"clip","field-notes":"right",pathways:"stagger",folio:"scale",timeline:"left",stories:"rise",masonry:"scale",steps:"stagger",questions:"rise",contact:"right",counselling:"rise"
+ editorial:"left",manifesto:"rise",profiles:"stagger",modules:"stagger",syllabus:"clip","field-notes":"right",pathways:"stagger",folio:"scale",timeline:"left",stories:"rise",masonry:"scale",steps:"stagger",questions:"rise",contact:"right",counselling:"rise",guidebook:"clip"
  };
  return <section id={pageKey==="resources"?`resource-topic-${String(index+1).padStart(2,"0")}`:undefined} className={`learning-section learning-${variant} ${index%2?"learning-alt":""}`}>
   <Reveal variant={revealVariant[variant]}>
