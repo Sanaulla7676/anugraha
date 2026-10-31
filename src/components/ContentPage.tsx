@@ -13,110 +13,62 @@ const img=(id:string,w=1000)=>`https://images.unsplash.com/${id}?auto=format&fit
 
 function Cta({href,label,secondary=false}:{href:string;label:string;secondary?:boolean}){
  return <Link href={href} className={secondary?"hero-button hero-button-secondary":"hero-button hero-button-primary"}>
-   {secondary?<span>{label}</span>:<TrueFocus sentence={label} manualMode={false} focusStyle="brackets" order="sequential" easing="smooth" blurAmount={4} focusScale={1} borderColor="#B88A4A" highlightColor="#D4B991" animationDuration={.48} pauseBetweenAnimations={1.05} cornerSize={7} borderWidth={1.5} unfocusedOpacity={.78}/>}
+   <TrueFocus sentence={label} manualMode={false} focusStyle="brackets" order="sequential" easing="smooth" blurAmount={5} focusScale={1} borderColor="#D4B991" highlightColor="#D4B991" animationDuration={.5} pauseBetweenAnimations={1} cornerSize={8} borderWidth={1.6} unfocusedOpacity={1}/>
    <b aria-hidden>↗</b>
  </Link>;
 }
 
-function HeroVisual({variant,pageKey,photo}:{variant:HeroVariant;pageKey:string;photo:string}){
- const image=(src:string,alt:string,className="")=><div className={`visual-image ${className}`}><Image src={img(src,1150)} alt={alt} fill sizes="(max-width: 760px) 100vw, 48vw"/></div>;
- switch(variant){
-  case "home": return <div className="hero-visual hero-visual-home">
-    {image(photo,"Wedding and event setting","visual-main")}
-    {image("photo-1492684223066-81342ee5ff30","Live event production","visual-small")}
-    <div className="floating-stat"><strong>45</strong><span>days to learn<br/>the event lifecycle</span></div>
-    <div className="visual-caption">PLAN · DESIGN · COORDINATE</div>
-  </div>;
-  case "manifesto": return <div className="hero-visual hero-visual-manifesto">
-    {image(photo,"Anugraha learning environment","visual-main")}
-    <div className="manifesto-note"><span>THE ANUGRAHA APPROACH</span><strong>Creative thinking.<br/>Clear planning.</strong><small>Learn how every detail connects.</small></div>
-  </div>;
-  case "founders": return <div className="hero-visual hero-visual-founders">
-    {image(photo,"Event team working behind the scenes","visual-main")}
-    <div className="founder-pill"><b>3</b><span>founders guiding<br/>one learning journey</span></div>
-    <div className="role-stack"><span>PLANNING</span><span>PRODUCTION</span><span>COORDINATION</span></div>
-  </div>;
-  case "course": return <div className="hero-visual hero-visual-course">
-    {image(photo,"An elegant event venue","visual-main")}
-    <div className="course-number"><strong>45</strong><span>DAY COURSE</span></div>
-    <div className="course-caption"><b>OFFLINE TRAINING</b><small>Vijayanagar · Bengaluru</small></div>
-  </div>;
-  case "curriculum": return <div className="hero-visual hero-visual-curriculum">
-    <div className="curriculum-board"><span className="board-label">THE COURSE COVERS</span>
-      {modules.slice(0,6).map((m,i)=><div className="board-row" key={m[0]}><small>{m[0]}</small><span>{m[1]}</span><b>↗</b></div>)}
-      <div className="board-foot">12 CORE LEARNING MODULES</div>
-    </div>
-  </div>;
-  case "exposure": return <div className="hero-visual hero-visual-exposure">
-    {image(photo,"A wedding celebration in an event venue","visual-main")}
-    {image("photo-1519167758481-83f550bb49b3","Decorated stage and event setup","visual-overlap")}
-    <div className="exposure-label"><strong>10–15</strong><span>days of<br/>observation</span></div>
-  </div>;
-  case "careers": return <div className="hero-visual hero-visual-careers">
-    {image(photo,"Event professionals coordinating work","visual-main")}
-    <div className="career-route-card"><span>SKILLS CAN LEAD TO</span>{["Event coordination","Wedding planning","Corporate events","Freelance projects"].map((x,i)=><div key={x}><b>0{i+1}</b>{x}</div>)}</div>
-  </div>;
-  case "portfolio": return <div className="hero-visual hero-visual-portfolio">
-    {image(photo,"Event planning workspace","visual-main")}
-    <div className="folio-paper folio-paper-back"><small>EVENT PLAN</small><strong>Run sheet</strong><i/><i/><i/></div>
-    <div className="folio-paper folio-paper-front"><small>CLIENT DOCUMENT</small><strong>Proposal</strong><span>01 / BRIEF</span><span>02 / QUOTATION</span><span>03 / EXECUTION</span></div>
-  </div>;
-  case "roadmap": return <div className="hero-visual hero-visual-roadmap">
-    <div className="roadmap-hero-line"><i/><i/><i/><i/></div>
-    <div className="roadmap-hero-stages"><span><b>01</b>Learn</span><span><b>02</b>Plan</span><span><b>03</b>Observe</span><span><b>04</b>Present</span></div>
-    {image(photo,"Students learning in a classroom","visual-main")}
-    <div className="roadmap-day-count"><strong>45</strong><span>DAYS</span></div>
-  </div>;
-  case "resources": return <div className="hero-visual hero-visual-resources">
-    <div className="guide-stack">
-      <div className="guide-sheet guide-sheet-back"><span>ANUGRAHA FIELD GUIDE</span><strong>Event plan</strong><i/><i/><i/><i/></div>
-      <div className="guide-sheet guide-sheet-front"><span>PLANNING BASICS / 01</span><strong>Start with<br/>the brief.</strong><small>Ask better questions.<br/>Plan with clarity.</small></div>
-      <div className="guide-seal">18<br/><small>GUIDES</small></div>
-    </div>
-  </div>;
-  case "stories": return <div className="hero-visual hero-visual-stories">
-    {image(photo,"Learners collaborating in a classroom","visual-main")}
-    <div className="honesty-card"><span>OUR PROMISE</span><strong>Real stories.<br/>No invented reviews.</strong><small>Student feedback will be published with permission.</small></div>
-  </div>;
-  case "gallery": return <div className="hero-visual hero-visual-gallery">
-    {image(photo,"Event venue and celebration","gallery-one")}
-    {image("photo-1519741497674-611481863552","Wedding event setup","gallery-two")}
-    {image("photo-1492684223066-81342ee5ff30","Live performance and stage lighting","gallery-three")}
-  </div>;
-  case "admissions": return <div className="hero-visual hero-visual-admissions">
-    <div className="admission-steps-visual"><span><b>01</b> Counselling</span><i/><span><b>02</b> Centre visit</span><i/><span><b>03</b> Course review</span><i/><span><b>04</b> Confirmation</span></div>
-    {image(photo,"Training centre and prospective students","visual-main")}
-  </div>;
-  case "faq": return <div className="hero-visual hero-visual-faq">
-    <div className="faq-hero-stack">{["Who can join?","What will I learn?","How does exposure work?","How do I enrol?"].map((q,i)=><div key={q}><span>0{i+1}</span><b>{q}</b><i>+</i></div>)}</div>
-  </div>;
-  case "contact": return <div className="hero-visual hero-visual-contact">
-    {image(photo,"An event team preparing an event space","visual-main")}
-    <div className="contact-float"><span>ADMISSIONS</span><strong>96865 68245</strong><small>Vijayanagar · Bengaluru</small></div>
-  </div>;
-  case "counselling": return <div className="hero-visual hero-visual-counselling">
-    <div className="counselling-prompt"><span>LET'S START WITH YOU</span><strong>Your goals.<br/>Your questions.<br/>Your next step.</strong><small>Course counselling · Anugraha</small></div>
-    {image(photo,"Counselling and learning discussion","visual-main")}
-  </div>;
- }
+function HeroStamp({pageKey,design}:{pageKey:string;design:typeof pageDesign[string]}){
+ const [value,label]=design.stats[0]||["45","day programme"];
+ const captions:Record<string,string>={
+  home:"A focused start in event management",
+  course:"One flagship offline programme",
+  founders:"Founder-led learning",
+  exposure:"Guided event observation",
+  curriculum:"Skills that connect",
+  careers:"Explore your direction",
+  projects:"Build practical evidence",
+  roadmap:"A structured learning journey",
+  gallery:"Different event environments",
+  admissions:"Start with counselling",
+  faq:"Clear answers before you enrol",
+  contact:"Speak with admissions",
+  counselling:"A conversation before a decision",
+  resources:"Practical planning guides"
+ };
+ return <aside className="hero-stamp" aria-label={`${value} ${label}`}>
+   <strong>{value}</strong>
+   <span>{label}</span>
+   <small>{captions[pageKey]||"From learning to leading events"}</small>
+ </aside>;
 }
 
 function Hero({pageKey,page}:{pageKey:string;page:PageContent}){
  const design=pageDesign[pageKey];
+ const imageSource=img(page.photo||page.gallery?.[0]||"photo-1492684223066-81342ee5ff30",2600);
+ const description=`Illustrative event and learning photography for ${page.tag.toLowerCase()}.`;
  return <section className={`page-hero page-hero-${design.heroVariant}`}>
-  <div className="hero-copy">
+  <Image className="hero-background" src={imageSource} alt={description} fill priority quality={90} sizes="100vw"/>
+  <div className="hero-image-caption">ILLUSTRATIVE PHOTOGRAPHY <i/> ANUGRAHA · VIJAYANAGAR, BENGALURU</div>
+  <div className="hero-content-shell">
+   <div className="hero-copy">
     <span className="hero-eyebrow">{page.tag}</span>
     <h1>{design.h1}</h1>
     <h2>{design.h2}</h2>
     <p>{design.heroCopy}</p>
-    {design.typeLines&&<div className="hero-type-line"><span>IN THIS PROGRAMME</span><TextType text={design.typeLines} typingSpeed={48} deletingSpeed={24} pauseDuration={1300} typeEffect="blur" cursorGlide startOnVisible={false}/></div>}
+    {design.typeLines&&<div className="hero-type-line">
+      <span>THE PROGRAMME</span>
+      <TextType text={design.typeLines} typingSpeed={52} initialDelay={180} deletingSpeed={28} pauseDuration={1500} typeEffect="blur" cursorGlide cursorStyle="underscore" cursorBlinkDuration={.5} showCursor/>
+    </div>}
     <div className="hero-button-row">
-      <Cta href={pageKey==="counselling"? "#counselling-form":"/counselling"} label={design.cta}/>
+      <Cta href={pageKey==="counselling"?"#counselling-form":"/counselling"} label={design.cta}/>
       <Cta href={design.secondaryHref} label={design.secondary} secondary/>
     </div>
     <div className="hero-location"><span>ANUGRAHA TRAINING INSTITUTE</span><i/>VIJAYANAGAR, BENGALURU</div>
+   </div>
   </div>
-  <HeroVisual variant={design.heroVariant} pageKey={pageKey} photo={page.photo}/>
+  <HeroStamp pageKey={pageKey} design={design}/>
+  <div className="hero-scroll-cue"><span>SCROLL TO EXPLORE</span><i/></div>
  </section>;
 }
 

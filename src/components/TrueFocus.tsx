@@ -1,107 +1,116 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {useEffect,useLayoutEffect,useMemo,useRef,useState} from "react";
 
-type Props = {
-  sentence: string;
-  separator?: string;
-  manualMode?: boolean;
-  focusStyle?: "brackets" | "box" | "underline" | "highlight";
-  order?: "sequential" | "random";
-  easing?: "smooth" | "spring";
-  blurAmount?: number;
-  focusScale?: number;
-  borderColor?: string;
-  highlightColor?: string;
-  animationDuration?: number;
-  pauseBetweenAnimations?: number;
-  cornerSize?: number;
-  borderWidth?: number;
-  unfocusedOpacity?: number;
-  className?: string;
+type FocusStyle="brackets"|"box"|"underline"|"highlight";
+type Props={
+ sentence?:string;separator?:string;manualMode?:boolean;focusStyle?:FocusStyle;
+ order?:"sequential"|"random";easing?:"smooth"|"spring";blurAmount?:number;
+ focusScale?:number;borderColor?:string;highlightColor?:string;glowColor?:string;
+ animationDuration?:number;pauseBetweenAnimations?:number;cornerSize?:number;
+ borderWidth?:number;unfocusedOpacity?:number;className?:string;
 };
 
+const FRAME_GAP=10;
+
 export default function TrueFocus({
-  sentence,
-  separator=" ",
-  manualMode=false,
-  focusStyle="brackets",
-  order="sequential",
-  easing="smooth",
-  blurAmount=4,
-  focusScale=1,
-  borderColor="#B88A4A",
-  highlightColor="#D4B991",
-  animationDuration=.5,
-  pauseBetweenAnimations=1.15,
-  cornerSize=7,
-  borderWidth=1.5,
-  unfocusedOpacity=.76,
-  className=""
-}:Props) {
-  const words=useMemo(()=>sentence.split(separator).filter(Boolean),[sentence,separator]);
-  const [currentIndex,setCurrentIndex]=useState(0);
-  const [rect,setRect]=useState({x:0,y:0,width:0,height:0});
-  const host=useRef<HTMLSpanElement>(null);
-  const wordRefs=useRef<Array<HTMLSpanElement|null>>([]);
-  const reduce=useRef(false);
+ sentence="True Focus",separator=" ",manualMode=false,focusStyle="brackets",
+ order="sequential",easing="smooth",blurAmount=5,focusScale=1,
+ borderColor="#D4B991",highlightColor="#D4B991",glowColor="transparent",
+ animationDuration=.5,pauseBetweenAnimations=1,cornerSize=8,borderWidth=1.6,
+ unfocusedOpacity=1,className=""
+}:Props){
+ const words=useMemo(()=>sentence.split(separator).filter(word=>word.trim()),[sentence,separator]);
+ const [currentIndex,setCurrentIndex]=useState(0);
+ const [rect,setRect]=useState<{x:number;y:number;width:number;height:number}|null>(null);
+ const [reduced,setReduced]=useState(false);
+ const host=useRef<HTMLSpanElement>(null);
+ const wordRefs=useRef<Array<HTMLSpanElement|null>>([]);
+ const activeIndex=words.length?currentIndex%words.length:-1;
+ const duration=reduced?0:animationDuration;
+ const ease=easing==="spring"?"cubic-bezier(.34,1.56,.64,1)":"cubic-bezier(.65,0,.35,1)";
 
-  useEffect(()=>{
-    const media=window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update=()=>{reduce.current=media.matches;};
-    update();
-    media.addEventListener("change",update);
-    return ()=>media.removeEventListener("change",update);
-  },[]);
+ useEffect(()=>{
+  const query=window.matchMedia("(prefers-reduced-motion: reduce)");
+  const update=()=>setReduced(query.matches);
+  update();query.addEventListener("change",update);
+  return()=>query.removeEventListener("change",update);
+ },[]);
 
-  useEffect(()=>{
-    if(manualMode||words.length<2||reduce.current)return;
-    const timer=window.setInterval(()=>{
-      setCurrentIndex(previous=>{
-        if(order!=="random")return(previous+1)%words.length;
-        const next=Math.floor(Math.random()*Math.max(1,words.length-1));
-        return next>=previous?next+1:next;
-      });
-    },(animationDuration+pauseBetweenAnimations)*1000);
-    return()=>window.clearInterval(timer);
-  },[animationDuration,manualMode,order,pauseBetweenAnimations,words.length]);
+ useEffect(()=>{
+  if(manualMode||reduced||words.length<2)return;
+  const interval=window.setInterval(()=>{
+   setCurrentIndex(previous=>{
+    const current=previous%words.length;
+    if(order!=="random")return(current+1)%words.length;
+    const next=Math.floor(Math.random()*(words.length-1));
+    return next>=current?next+1:next;
+   });
+  },(animationDuration+pauseBetweenAnimations)*1000);
+  return()=>window.clearInterval(interval);
+ },[animationDuration,manualMode,order,pauseBetweenAnimations,reduced,words.length]);
 
-  useLayoutEffect(()=>{
-    const root=host.current;
-    const word=wordRefs.current[currentIndex];
-    if(!root||!word)return;
-    const measure=()=>{
-      const a=root.getBoundingClientRect(),b=word.getBoundingClientRect();
-      setRect({x:b.left-a.left,y:b.top-a.top,width:b.width,height:b.height});
-    };
-    measure();
-    const observer=new ResizeObserver(measure);
-    observer.observe(root);
-    wordRefs.current.forEach(node=>node&&observer.observe(node));
-    return()=>observer.disconnect();
-  },[currentIndex,sentence]);
+ useLayoutEffect(()=>{
+  const container=host.current,word=wordRefs.current[activeIndex];
+  if(!container||!word)return;
+  const measure=()=>{
+   const a=container.getBoundingClientRect(),b=word.getBoundingClientRect();
+   const next={x:b.left-a.left,y:b.top-a.top,width:b.width,height:b.height};
+   setRect(previous=>previous&&previous.x===next.x&&previous.y===next.y&&previous.width===next.width&&previous.height===next.height?previous:next);
+  };
+  measure();
+  if(typeof ResizeObserver==="undefined")return;
+  const observer=new ResizeObserver(measure);
+  observer.observe(container);
+  wordRefs.current.forEach(node=>node&&observer.observe(node));
+  return()=>observer.disconnect();
+ },[activeIndex,sentence,separator]);
 
-  const style={
-    "--focus-border":borderColor,
-    "--focus-highlight":highlightColor,
-    "--focus-width":`${borderWidth}px`,
-    "--focus-corner":`${cornerSize}px`,
-    "--focus-duration":`${animationDuration}s`,
-    "--focus-ease":easing==="spring"?"cubic-bezier(.34,1.56,.64,1)":"cubic-bezier(.65,0,.35,1)"
-  } as React.CSSProperties;
+ const frame=rect?{
+  x:rect.x-(rect.width*(focusScale-1))/2,
+  y:rect.y-(rect.height*(focusScale-1))/2,
+  width:rect.width*focusScale,
+  height:rect.height*focusScale
+ }:null;
+ const frameStyle:React.CSSProperties={
+  "--focus-border":borderColor,
+  "--focus-highlight":highlightColor,
+  "--focus-glow":glowColor,
+  "--focus-duration":`${duration}s`,
+  "--focus-ease":ease,
+  "--focus-corner":`${cornerSize}px`,
+  "--focus-width":`${borderWidth}px`
+ } as React.CSSProperties;
 
-  return <span ref={host} className={`true-focus-button ${className}`} style={style}>
-    {words.map((word,index)=>{
-      const active=index===currentIndex;
-      return <span key={`${word}-${index}`} ref={node=>{wordRefs.current[index]=node;}}
-        className={`true-focus-word ${active?"is-focused":""}`}
-        style={{filter:`blur(${active?0:blurAmount}px)`,opacity:active?1:unfocusedOpacity,transform:active&&focusScale!==1?`scale(${focusScale})`:"scale(1)"}}
-        onMouseEnter={()=>manualMode&&setCurrentIndex(index)} aria-hidden={!active}>{word}</span>;
-    })}
-    {focusStyle==="highlight"&&<span aria-hidden className="true-focus-highlight" style={{left:rect.x-3,top:rect.y-2,width:rect.width+6,height:rect.height+4}}/>}
-    {focusStyle!=="highlight"&&<span aria-hidden className={`true-focus-frame true-focus-${focusStyle}`} style={{left:rect.x-5,top:rect.y-3,width:rect.width+10,height:rect.height+6}}>
-      {focusStyle==="brackets"&&<><i className="focus-corner tl"/><i className="focus-corner tr"/><i className="focus-corner bl"/><i className="focus-corner br"/></>}
-    </span>}
-    <span className="sr-only">{sentence}</span>
-  </span>;
+ const shape=frame?{
+  box:{left:frame.x-FRAME_GAP,top:frame.y-FRAME_GAP,width:frame.width+FRAME_GAP*2,height:frame.height+FRAME_GAP*2},
+  underline:{left:frame.x,top:frame.y+frame.height+FRAME_GAP*.4,width:frame.width,height:borderWidth},
+  highlight:{left:frame.x-frame.height*.14,top:frame.y+frame.height*.04,width:frame.width+frame.height*.28,height:frame.height*.92}
+ }:null;
+ const corners=frame?{
+  tl:{left:frame.x-FRAME_GAP,top:frame.y-FRAME_GAP},
+  tr:{left:frame.x+frame.width+FRAME_GAP-cornerSize,top:frame.y-FRAME_GAP},
+  bl:{left:frame.x-FRAME_GAP,top:frame.y+frame.height+FRAME_GAP-cornerSize},
+  br:{left:frame.x+frame.width+FRAME_GAP-cornerSize,top:frame.y+frame.height+FRAME_GAP-cornerSize}
+ }:null;
+
+ return <span ref={host} className={`true-focus-button ${className}`} style={frameStyle} aria-label={sentence}>
+  {words.map((word,index)=>{
+   const active=index===activeIndex;
+   return <span key={`${word}-${index}`} ref={node=>{wordRefs.current[index]=node;}}
+    className={`true-focus-word ${manualMode?"manual":""} ${active&&!manualMode?"active":""}`}
+    style={{filter:`blur(${active?0:blurAmount}px)`,opacity:active?1:unfocusedOpacity,transform:focusScale!==1?`scale(${active?focusScale:1})`:undefined}}
+    onMouseEnter={()=>manualMode&&setCurrentIndex(index)} aria-hidden="true">{word}</span>;
+  })}
+  {focusStyle==="highlight"&&shape&&<span className="true-focus-highlight" aria-hidden="true" style={shape.highlight}/>}
+  {shape&&corners&&focusStyle!=="highlight"&&<span className="true-focus-frame" aria-hidden="true">
+   {focusStyle==="box"&&<span className="true-focus-box" style={shape.box}/>}
+   {focusStyle==="underline"&&<span className="true-focus-underline" style={shape.underline}/>}
+   {focusStyle==="brackets"&&<>
+    <i className="focus-corner top-left" style={corners.tl}/><i className="focus-corner top-right" style={corners.tr}/>
+    <i className="focus-corner bottom-left" style={corners.bl}/><i className="focus-corner bottom-right" style={corners.br}/>
+   </>}
+  </span>}
+  <span className="sr-only">{sentence}</span>
+ </span>;
 }
