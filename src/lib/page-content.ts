@@ -425,5 +425,35 @@ sections:[
 ],
 closingTitle:"A useful conversation is the best first step.",
 closingText:"Call 96865 68245 or submit a counselling request and the team will guide you through the next step."
+},
+counselling: {
+tag:"BOOK A COUNSELLING SESSION",
+title:"Let's understand what you want to build.",
+subtitle:"A clear conversation about your learning goals and the 45-day programme.",
+intro:"Counselling is an opportunity to understand the programme before making a decision. Share a few details, discuss your interests with the admissions team and review the centre, curriculum, exposure, schedule and fee.",
+photo:"photo-1523240795612-9a054b0db644",
+gallery:["photo-1524178232363-1fb2b075b655","photo-1523580494863-6f3031224c94","photo-1497366754035-f200968a6e72"],
+sections:[
+{title:"Why counselling comes first",body:"The purpose of counselling is to help you understand what the course includes, how the 45-day learning cycle works and whether the programme matches your goals."},
+{title:"Tell us about yourself",body:"Share your name and contact details so the admissions team can respond to your enquiry and arrange the next conversation."},
+{title:"Your age and education",body:"Applicants must be at least 16 years old. There is no minimum qualification requirement; applicants under 18 need parent or guardian consent."},
+{title:"Your current occupation",body:"Tell the team whether you are a student, working professional, homemaker, freelancer, business owner or exploring a career change."},
+{title:"Why event management interests you",body:"Explain what attracts you to the industry, whether it is weddings, corporate events, creative production, client work or the possibility of building an event business."},
+{title:"Your preferred counselling date",body:"Share a preferred date so the admissions team can discuss a suitable counselling time. A request is not a confirmed appointment until the team responds."},
+{title:"Your preferred time",body:"Indicate whether morning, afternoon, evening or another mutually convenient time is best for you."},
+{title:"What you want to learn",body:"The course covers event planning, client communication, quotations, budgeting, vendor sourcing, design, production, marketing, team management and crisis management."},
+{title:"Questions you want answered",body:"Use counselling to ask about the course structure, eligibility, teaching approach, observational exposure, certificates, career guidance and any personal questions."},
+{title:"Understand the 45-day structure",body:"The flagship programme is a 45-day offline course at the Vijayanagar centre. The admissions team can explain the daily timetable and next batch cycle."},
+{title:"Discuss industry exposure",body:"The programme includes 10–15 days of observational exposure across the course. Specific event visits depend on actual schedules and access."},
+{title:"Explore career directions",body:"Discuss possible roles, freelance projects, vendor networking and event business basics. Career support is guidance and assistance, not a job guarantee."},
+{title:"Visit the training centre",body:"A centre visit lets you see the classroom, projector and whiteboard, practical décor materials, production demonstration area, mock meeting space and resources."},
+{title:"Review fee and payment details",body:"The current fee is explained directly by admissions. The stated process is full payment at admission; ask the team to confirm the amount and receipt details."},
+{title:"Understand admission confirmation",body:"After reviewing the programme and deciding to proceed, the team explains admission requirements, batch availability and the confirmation process."},
+{title:"Plan for learning resources",body:"After admission, course announcements and learning materials are shared through WhatsApp and Google Drive. There is no separate student portal at present."},
+{title:"Know the certificate details",body:"Anugraha issues its own course completion certificate and separate practical experience certificate. External accreditation has not been confirmed."},
+{title:"Prepare for your first conversation",body:"Think about your interests, preferred learning direction, questions and the kind of work you hope to explore after the course."}
+],
+closingTitle:"A good decision begins with useful information.",
+closingText:"Submit a counselling request and open WhatsApp with a prepared message to the admissions team."
 }
 };
