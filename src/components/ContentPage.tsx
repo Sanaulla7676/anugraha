@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
 import TrueFocus from "@/components/TrueFocus";
 import TextType from "@/components/TextType";
+import CounsellingForm from "@/components/CounsellingForm";
 
 const imageUrl = (id:string, width=1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=88`;
 
@@ -39,6 +40,7 @@ export default function ContentPage({pageKey}:{pageKey:keyof typeof pageContent}
   const page=pageContent[pageKey];
   if (!page) return null;
   const isHome=pageKey==="home";
+  const isCounselling=pageKey==="counselling";
   return <>
     <section className={isHome?"editorial-hero home-hero":"editorial-hero"}>
       <div className="hero-image-wrap">
@@ -71,6 +73,8 @@ export default function ContentPage({pageKey}:{pageKey:keyof typeof pageContent}
         <div className="intro-side-note"><span className="intro-mark">✳</span><p>Learn to connect creative thinking with clear plans, sound budgets, reliable people and thoughtful coordination.</p></div>
       </div>
     </Section>
+
+    {isCounselling&&<CounsellingForm/>}
 
     {page.sections.map((section,index)=><section className={`detail-section ${index%2===0?"detail-tone-ivory":"detail-tone-beige"}`} key={section.title}>
       <Reveal>
