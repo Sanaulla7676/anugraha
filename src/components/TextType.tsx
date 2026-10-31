@@ -97,7 +97,7 @@ export default function TextType({
 
   return <span className={`text-type-root ${className}`} ref={root} aria-label={items.join(" / ")}>
     <span className="text-type-content" aria-hidden>{shown}<span ref={caret} className="text-type-caret">​</span></span>
-    <span ref={cursor} className="text-type-cursor" style={{color}} aria-hidden>{cursorCharacter}</span>
+    <span ref={cursor} className="text-type-cursor" style={{color:cursorColor}} aria-hidden>{cursorCharacter}</span>
     <span className="sr-only">{current}</span>
   </span>;
 }
