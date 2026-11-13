@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import {useEffect,useRef} from "react";
-import {ArrowRight,ArrowUpRight,Play} from "lucide-react";
+import {useEffect,useRef,useState} from "react";
+import {ArrowRight,ArrowUpRight,Play,Menu,X} from "lucide-react";
 import {gsap} from "gsap";
 
 const img=(id:string,w=760)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=86`;
@@ -14,6 +14,7 @@ const tracks=[
 function Laurel(){return <svg viewBox="0 0 84 42" aria-hidden="true" className="ng-laurel"><path d="M32 35C19 33 9 24 7 10M52 35c13-2 23-11 25-25" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><path d="M12 17l-7-2 5-6M17 25l-8 1 3-7M24 31l-7 4 1-8M72 17l7-2-5-6M67 25l8 1-3-7M60 31l7 4-1-8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
 export default function HomeHero(){
  const root=useRef<HTMLElement>(null);
+ const [menuOpen,setMenuOpen]=useState(false);
  useEffect(()=>{
   const section=root.current;
   if(!section||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
@@ -39,7 +40,8 @@ export default function HomeHero(){
     <nav className="ng-nav-links" aria-label="Main navigation"><Link className="is-active" href="/">Home</Link><Link href="/course">Course</Link><Link href="/curriculum">Curriculum</Link><Link href="/exposure">Exposure</Link><Link href="/about">About</Link></nav>
    </div>
    <div className="ng-center-badge"><Laurel/><div><strong>3 FOUNDERS</strong><span>10+ YEARS OF EXPERIENCE EACH</span></div><Laurel/></div>
-   <div className="ng-nav-actions"><Link className="ng-nav-ghost" href="/roadmap"><Play size={15} fill="currentColor"/> Course flow</Link><Link className="ng-nav-cta" href="/counselling">Enquire now <ArrowUpRight size={17}/></Link></div>
+   <div className="ng-nav-actions"><Link className="ng-nav-ghost" href="/roadmap"><Play size={15} fill="currentColor"/> Course flow</Link><Link className="ng-nav-cta" href="/counselling">Enquire now <ArrowUpRight size={17}/></Link><button type="button" className="ng-mobile-menu" aria-label={menuOpen?"Close menu":"Open menu"} aria-expanded={menuOpen} onClick={()=>setMenuOpen(!menuOpen)}>{menuOpen?<X size={19}/>:<Menu size={19}/>}</button></div>
+   {menuOpen&&<nav className="ng-mobile-panel" aria-label="Mobile navigation"><Link href="/" onClick={()=>setMenuOpen(false)}>Home</Link><Link href="/course" onClick={()=>setMenuOpen(false)}>45-Day Course</Link><Link href="/curriculum" onClick={()=>setMenuOpen(false)}>Curriculum</Link><Link href="/exposure" onClick={()=>setMenuOpen(false)}>Industry Exposure</Link><Link href="/roadmap" onClick={()=>setMenuOpen(false)}>Training Roadmap</Link><Link href="/about" onClick={()=>setMenuOpen(false)}>About Anugraha</Link></nav>}
   </header>
   <img className="ng-subject" src="https://thumbs.wbm.im/pw/medium/d2a9fe057e95cb3e4e18761a72bbce07.png" alt="Professional event coordinator wearing a communication headset" fetchPriority="high"/><span className="ng-pulse-ring" aria-hidden="true"/>
   <div className="ng-left">
