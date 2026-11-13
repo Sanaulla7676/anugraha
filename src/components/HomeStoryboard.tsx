@@ -17,7 +17,8 @@ export default function HomeStoryboard(){
   gsap.registerPlugin(ScrollTrigger);
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const ctx=gsap.context(()=>{
-   gsap.fromTo(".ng-story-line",{scaleX:0},{scaleX:1,ease:"none",scrollTrigger:{trigger:node,start:"top 68%",end:"center 48%",scrub:true}});
+   const vertical=window.matchMedia("(max-width: 767px)").matches;
+   gsap.fromTo(".ng-story-line",vertical?{scaleY:0}:{scaleX:0},vertical?{scaleY:1}:{scaleX:1,ease:"none",scrollTrigger:{trigger:node,start:"top 68%",end:"center 48%",scrub:true}});
    gsap.fromTo(".ng-story-step",{y:36,opacity:0},{y:0,opacity:1,duration:.72,stagger:.12,ease:"power3.out",scrollTrigger:{trigger:node,start:"top 75%",once:true}});
    gsap.to(".ng-story-orbit",{rotate:360,duration:14,repeat:-1,ease:"none",transformOrigin:"center"});
   },node);
