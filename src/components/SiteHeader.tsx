@@ -9,13 +9,13 @@ import PillNav from "@/components/PillNav";
 export default function SiteHeader(){
  const pathname=usePathname();
  const [scrolled,setScrolled]=useState(false);
- if(pathname==="/") return null;
  useEffect(()=>{
   const update=()=>setScrolled(window.scrollY>42);
   update();
   window.addEventListener("scroll",update,{passive:true});
   return()=>window.removeEventListener("scroll",update);
  },[pathname]);
+ if(pathname==="/") return null;
  return <header className={`site-header ${scrolled?"is-scrolled":"is-over-hero"}`}>
   <div className="header-inner">
    <Link href="/" className="brand-lockup" aria-label="Anugraha Training Institute home">
