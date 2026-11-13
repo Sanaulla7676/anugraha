@@ -5,7 +5,6 @@ import {modules,faqs} from "@/lib/site";
 import {pageDesign, type HeroVariant, type SectionVariant} from "@/lib/page-design";
 import {getSectionDetails} from "@/lib/section-details";
 import Reveal from "@/components/Reveal";
-import TrueFocus from "@/components/TrueFocus";
 import TextType from "@/components/TextType";
 import CounsellingForm from "@/components/CounsellingForm";
 import HomeHero from "@/components/HomeHero";
@@ -15,8 +14,7 @@ const img=(id:string,w=1000)=>`https://images.unsplash.com/${id}?auto=format&fit
 
 function Cta({href,label,secondary=false}:{href:string;label:string;secondary?:boolean}){
  return <Link href={href} className={secondary?"hero-button hero-button-secondary":"hero-button hero-button-primary"}>
-   <TrueFocus sentence={label} manualMode={false} focusStyle="brackets" order="sequential" easing="smooth" blurAmount={5} focusScale={1} borderColor="#D4B991" highlightColor="#D4B991" animationDuration={.5} pauseBetweenAnimations={1} cornerSize={8} borderWidth={1.6} unfocusedOpacity={1}/>
-   <b aria-hidden>↗</b>
+   <span>{label}</span><b aria-hidden>↗</b>
  </Link>;
 }
 
