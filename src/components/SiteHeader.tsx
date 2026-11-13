@@ -9,6 +9,7 @@ import PillNav from "@/components/PillNav";
 export default function SiteHeader(){
  const pathname=usePathname();
  const [scrolled,setScrolled]=useState(false);
+ if(pathname==="/") return null;
  useEffect(()=>{
   const update=()=>setScrolled(window.scrollY>42);
   update();

@@ -8,6 +8,8 @@ import Reveal from "@/components/Reveal";
 import TrueFocus from "@/components/TrueFocus";
 import TextType from "@/components/TextType";
 import CounsellingForm from "@/components/CounsellingForm";
+import HomeHero from "@/components/HomeHero";
+import HomeStoryboard from "@/components/HomeStoryboard";
 
 const img=(id:string,w=1000)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=86`;
 
@@ -145,7 +147,8 @@ export default function ContentPage({pageKey}:{pageKey:string}){
  if(!page||!design)return null;
  const sections=page.sections;
  return <>
-  <Hero pageKey={pageKey} page={page}/>
+  {pageKey==="home"?<HomeHero/>:<Hero pageKey={pageKey} page={page}/>}
+  {pageKey==="home"&&<HomeStoryboard/>}
   <Stats stats={design.stats}/>
   <IntroPanel page={page} design={design} pageKey={pageKey}/>
   <FeatureSection pageKey={pageKey} variant={design.heroVariant}/>
