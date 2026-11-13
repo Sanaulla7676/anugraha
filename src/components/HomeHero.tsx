@@ -21,9 +21,9 @@ export default function HomeHero(){
    const tl=gsap.timeline({defaults:{ease:"power3.out"}});
    tl.fromTo(".ng-nav",{y:-18,opacity:0},{y:0,opacity:1,duration:.65})
     .fromTo(".ng-subject",{y:28,scale:1.035,opacity:0},{y:0,scale:1,opacity:1,duration:1.1,ease:"power2.out"},"-=.45")
-    .fromTo(".ng-left > *",{y:22,opacity:0},{y:0,opacity:1,duration:.65,stagger:.09},"-=.75")
-    .fromTo(".ng-stats,.ng-vibes",{y:18,opacity:0},{y:0,opacity:1,duration:.7,stagger:.12},"-=.55")
-    .fromTo(".ng-feature-card",{y:28,opacity:0,scale:.97},{y:0,opacity:1,scale:1,duration:.7,stagger:.14},"-=.45");
+    .fromTo(".ng-left > *",{y:14,opacity:.94},{y:0,opacity:1,duration:.65,stagger:.09},"-=.75")
+    .fromTo(".ng-stats,.ng-vibes",{y:12,opacity:.94},{y:0,opacity:1,duration:.7,stagger:.12},"-=.55")
+    .fromTo(".ng-feature-card",{y:14,opacity:.94,scale:.985},{y:0,opacity:1,scale:1,duration:.7,stagger:.14},"-=.45");
    gsap.to(".ng-subject",{y:-7,duration:4.4,ease:"sine.inOut",repeat:-1,yoyo:true});
    gsap.to(".ng-ambient",{scale:1.08,opacity:.8,duration:6,ease:"sine.inOut",repeat:-1,yoyo:true});
    gsap.to(".ng-ribbon-path",{strokeDashoffset:-260,duration:9,ease:"none",repeat:-1});
@@ -41,7 +41,7 @@ export default function HomeHero(){
    <div className="ng-center-badge"><Laurel/><div><strong>3 FOUNDERS</strong><span>10+ YEARS OF EXPERIENCE EACH</span></div><Laurel/></div>
    <div className="ng-nav-actions"><Link className="ng-nav-ghost" href="/roadmap"><Play size={15} fill="currentColor"/> Course flow</Link><Link className="ng-nav-cta" href="/counselling">Enquire now <ArrowUpRight size={17}/></Link></div>
   </header>
-  <img className="ng-subject" src="https://thumbs.wbm.im/pw/medium/b3d100ded00147a3a1d13812281648ad.png" alt="Professional event coordinator wearing a communication headset" fetchPriority="high"/>
+  <img className="ng-subject" src="https://thumbs.wbm.im/pw/medium/d2a9fe057e95cb3e4e18761a72bbce07.png" alt="Professional event coordinator wearing a communication headset" fetchPriority="high"/><span className="ng-pulse-ring" aria-hidden="true"/>
   <div className="ng-left">
    <p className="ng-eyebrow"><i/> EVENT MANAGEMENT TRAINING · BENGALURU</p>
    <h1>LEARN EVENT<br/><span>MANAGEMENT.</span></h1>
