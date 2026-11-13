@@ -699,9 +699,9 @@ img{max-width:100%}
 .ng-track-arrow{display:grid;place-items:center;width:34px;height:34px;margin-left:auto;flex:0 0 34px;border:1.5px solid rgba(255,255,255,.8);border-radius:50%;transition:background .2s,color .2s}
 .ng-track:hover .ng-track-arrow{background:#fff;color:#111}
 .ng-one-course{display:grid;gap:4px;margin-top:auto;margin-bottom:10px;color:#fff}
-.ng-one-course strong{font-size:clamp(32px,4.7vw,74px);font-weight:900;line-height:.95;letter-spacing:-.04em;text-shadow:0 2px 16px rgba(60,10,0,.35)}
-.ng-one-course span{font-size:clamp(8px,.8vw,12px);font-weight:700;letter-spacing:.29em}
-.ng-trailer-button{display:inline-flex;align-items:center;gap:12px;min-height:49px;padding:0 18px;border:2px solid #fff;border-radius:9999px;color:#fff;font-size:clamp(11px,1vw,15px);font-weight:700;transition:background .2s}
+.ng-one-course strong{font-size:clamp(30px,3.8vw,62px);font-weight:900;line-height:.95;letter-spacing:-.04em;white-space:nowrap;text-shadow:0 2px 16px rgba(60,10,0,.35)}
+.ng-one-course span{font-size:clamp(8px,.75vw,11px);font-weight:700;letter-spacing:.2em;white-space:nowrap}
+.ng-trailer-button{display:inline-flex;align-items:center;gap:12px;min-height:46px;padding:0 18px;border:2px solid #fff;border-radius:9999px;color:#fff;font-size:clamp(11px,1vw,15px);font-weight:700;transition:background .2s}
 .ng-trailer-button:hover{background:rgba(255,255,255,.15)}
 .ng-trailer-button>span{display:grid;place-items:center;width:30px;height:30px;border:1px solid #fff;border-radius:50%}
 .ng-right{position:absolute;z-index:8;left:52.6%;right:2.4%;top:0;bottom:0}
