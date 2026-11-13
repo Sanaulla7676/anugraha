@@ -398,6 +398,7 @@ img{max-width:100%}
  .header-inner{min-height:72px;padding:0 5%;gap:10px}
  .brand-lockup{flex:1 1 auto;gap:8px}.brand-lockup img{width:37px;height:37px}.brand-wordmark strong{font-size:16px;letter-spacing:.13em}.brand-wordmark small{font-size:7px}
  .pill-nav{flex:0 0 auto}.pill-nav-toggle{width:76px;height:42px;padding:0 12px}
+ .pill-nav-panel{position:fixed;top:80px;left:12px;right:12px;width:auto;max-height:calc(100svh - 95px);z-index:120}
  .header-admissions{min-height:39px;padding:0 11px;font-size:9px}
  .page-hero{padding:54px 6% 44px;gap:24px}
  .hero-copy h1{font-size:clamp(40px,11vw,58px);line-height:1.09}
