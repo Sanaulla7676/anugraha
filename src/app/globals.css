@@ -932,3 +932,8 @@ img{max-width:100%}
  .enquiry-form{grid-template-columns:1fr;padding:18px;gap:12px}
  .form-full{grid-column:1}
 }
+
+/* Clear contrast for the internal sticky header */
+.brand-wordmark,.brand-wordmark strong{color:#3C3833!important}
+.brand-wordmark small{color:#7A756D!important}
+.brand-lockup img{filter:none!important;opacity:1}
