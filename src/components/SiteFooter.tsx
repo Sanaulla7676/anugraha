@@ -1,11 +1,38 @@
 import Link from "next/link";
-const groups=[
-{title:"The institute",links:[["About Anugraha","/about"],["Founders & trainers","/founders"],["Training centre","/contact"],["Event gallery","/gallery"]]},
-{title:"The course",links:[["45-day programme","/course"],["Curriculum","/curriculum"],["Training roadmap","/roadmap"],["Industry exposure","/exposure"]]},
-{title:"Your next step",links:[["Career pathways","/careers"],["Student projects","/projects"],["Student stories","/student-stories"],["FAQs","/faq"],["Resources & guides","/resources"],["Contact","/contact"]]}
+import { programs, programHref } from "@/lib/programs";
+
+const groups = [
+  { title: "Institute", links: [["About Anugraha", "/about"], ["Founders & trainers", "/founders"], ["Gallery", "/gallery"], ["Contact", "/contact"]] },
+  { title: "Course", links: [["45-day course", "/course"], ["Curriculum", "/curriculum"], ["Roadmap", "/roadmap"], ["Industry exposure", "/exposure"], ["Career paths", "/careers"]] },
+  { title: "Next steps", links: [["Admissions", "/admissions"], ["Book counselling", "/counselling"], ["Student projects", "/projects"], ["Student stories", "/student-stories"], ["FAQs", "/faq"], ["Resources", "/resources"]] }
 ];
-export default function SiteFooter(){return <footer className="site-footer"><div className="footer-main">
-<div className="footer-brand-block"><Link href="/" className="footer-wordmark">ANUGRAHA</Link><span>TRAINING INSTITUTE</span><p>From Learning to Leading Events.</p><small>Event Management Training Institute<br/>Vijayanagar · Bengaluru</small></div>
-{groups.map(group=><div className="footer-links" key={group.title}><h4>{group.title}</h4>{group.links.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</div>)}
-<div className="footer-contact"><h4>Talk to admissions</h4><a className="footer-phone" href="tel:9686568245">96865 68245</a><p>Monday to Saturday<br/>Current calling hours confirmed by the team.</p><Link className="footer-contact-link" href="/counselling">Book a counselling session ↗</Link></div>
-</div><div className="footer-bottom"><span>© {new Date().getFullYear()} Anugraha Training Institute</span><span>LEARN · PLAN · CREATE · LEAD</span><Link href="/contact">Contact admissions</Link></div></footer>}
+
+export default function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="foot-top">
+        <div className="foot-brand">
+          <Link href="/" className="foot-word">ANUGRAHA</Link>
+          <p className="tag">TRAINING INSTITUTE</p>
+          <p>From learning to leading events. Event Management Training Institute, Vijayanagar, Bengaluru.</p>
+          <a className="foot-phone" href="tel:9686568245">96865 68245</a>
+        </div>
+        <nav className="foot-programs" aria-label="All programs">
+          <h2 className="foot-h">12 Programs</h2>
+          <ul>{programs.map(p => <li key={p.slug}><Link href={programHref(p.slug)}><span>{p.no}</span>{p.name}</Link></li>)}</ul>
+        </nav>
+        {groups.map(g => (
+          <nav key={g.title} className="foot-col" aria-label={g.title}>
+            <h2 className="foot-h">{g.title}</h2>
+            {g.links.map(([l, h]) => <Link key={h} href={h}>{l}</Link>)}
+          </nav>
+        ))}
+      </div>
+      <div className="foot-bottom">
+        <span>© {new Date().getFullYear()} Anugraha Training Institute</span>
+        <span className="tag">LEARN • PLAN • CREATE • LEAD</span>
+        <Link href="/counselling">Book a counselling session</Link>
+      </div>
+    </footer>
+  );
+}
